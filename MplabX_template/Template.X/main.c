@@ -2,42 +2,114 @@
  * File:   main.c
  * Author: Ahmed
  *
- * Created on March 31, 2017, 3:41 PM
+ * Created on April 4, 2017, 7:40 AM
  */
+#include "Library.h"
+#include "routines_defs.h"
+//#define TESTCODE
+#define APPLICATION_CODE
+int main(void) 
+{
+#ifdef __XC8
+    SYSTEM_Initialize();
+#else
+    system_init();
+#endif
 
-// PIC16LF1614 Configuration Bit Settings
 
-// 'C' source line config statements
+    strRGB_t color_str;
+    //const routine_item_t* items;
+   //items = get_bubble_routine();
+    bool commcheck = false;
+    colors_names_t colorval;
+    
+ routine_item_t mentor_bubble_routine = 
+{Blue, Highest, 1000, color_on, 2} ;
 
-// CONFIG1
-#pragma config FOSC = INTOSC    //  (INTOSC oscillator: I/O function on CLKIN pin)
-#pragma config PWRTE = OFF      // Power-up Timer Enable (PWRT disabled)
-#pragma config MCLRE = OFF      // MCLR Pin Function Select (MCLR/VPP pin function is digital input)
-#pragma config CP = OFF         // Flash Program Memory Code Protection (Program memory code protection is disabled)
-#pragma config BOREN = ON       // Brown-out Reset Enable (Brown-out Reset enabled)
-#pragma config CLKOUTEN = OFF   // Clock Out Enable (CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin)
 
-// CONFIG2
-#pragma config WRT = OFF        // Flash Memory Self-Write Protection (Write protection off)
-#pragma config PPS1WAY = ON     // Peripheral Pin Select one-way control (The PPSLOCK bit cannot be cleared once it is set by software)
-#pragma config ZCD = OFF        // Zero Cross Detect Disable Bit (ZCD disable.  ZCD can be enabled by setting the ZCDSEN bit of ZCDCON)
-#pragma config PLLEN = ON       // PLL Enable Bit (4x PLL is always enabled)
-#pragma config STVREN = ON      // Stack Overflow/Underflow Reset Enable (Stack Overflow or Underflow will cause a Reset)
-#pragma config BORV = LO        // Brown-out Reset Voltage Selection (Brown-out Reset Voltage (Vbor), low trip point selected.)
-#pragma config LPBOR = OFF      // Low-Power Brown Out Reset (Low-Power BOR is disabled)
-#pragma config LVP = ON         // Low-Voltage Programming Enable (Low-voltage programming enabled)
+ routine_item_t paired_bubble_routine = 
+{Red, Highest, 1000, color_on, 2
 
-// CONFIG3
-#pragma config WDTCPS = WDTCPS1F// WDT Period Select (Software Control (WDTPS))
-#pragma config WDTE = ON        // Watchdog Timer Enable (WDT enabled)
-#pragma config WDTCWS = WDTCWSSW// WDT Window Select (Software WDT window size control (WDTWS bits))
-#pragma config WDTCCS = SWC     // WDT Input Clock Selector (Software control, controlled by WDTCS bits)
+};
+routine_item_t error_routine = 
+{White, Highest, 2000, color_flash, 10
+};
 
-// #pragma config statements should precede project file includes.
-// Use project enums instead of #define for ON and OFF.
+routine_item_t initialize_bubble_routine = 
+{Green, Highest, 2000, color_one_time, 5
+};
 
-#include <xc.h>
+routine_item_t idle_bubble_routine = 
+{Cyan, Highest, 1000, color_on, 2}
+;
 
-void main(void) {
-    return;
+  routine_item_t red_group_bubble_routine = 
+{Red, Highest, 1000, color_off, 2
+
+};
+ routine_item_t orange_group_bubble_routine = 
+{Red, Highest, 1000, color_off, 2 
+
+};
+ routine_item_t yellow_group_bubble_routine = 
+{Red, Highest, 1000, color_off, 2
+
+};
+ routine_item_t purple_group_bubble_routine= 
+{Red, Highest, 1000, color_off, 2
+
+};
+ routine_item_t flashback_routine = 
+{Red, Highest, 1000, color_off, 2 
+
+};
+
+    
+    int i;
+    //routine_item_t news;
+    //color_str = get_color_val(green);
+    //load_color(&color_str,lowest);
+    #ifdef TESTCODE
+    while(1)
+    {        
+        commcheck = communicate_with_bubbles();
+        if (commcheck){
+            colorval = Green;
+        }
+        else{
+           colorval = Red;
+        }
+        colorval = Olive;
+        color_str = get_color_val(colorval);
+        load_color(&color_str,lowest); 
+//        excute_next_routine_item(items);
+//        for(int i=0; i <MAX_ROUTINE_SIZE; i++){
+//           news = mentor_bubble_routine[i];
+//           news = student_bubble_routine[i];
+//           news = treasure_bubble_routine[i];
+//           news = paired_bubble_routine[i];
+//           news = error_routine[i];
+//        }
+//        load_color(get_color_val(off),lowest);
+    }  
+#endif
+
+#ifdef APPLICATION_CODE 
+   // for (i=0;i<(initialize_bubble_routine.num_of_repeats);i++)
+    {
+        perform_action(&initialize_bubble_routine);
+    }
+  //change_routine_array(idle_bubble); 
+  
+  while (1)
+  {
+ //excute_next_routine_item(items); 
+      perform_action(&idle_bubble_routine);
+  
+  }
+  
+#endif
+    return 0;
 }
+
+

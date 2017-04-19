@@ -13,8 +13,8 @@ CND_PACKAGE_NAME_XC8=template.x.tar
 CND_PACKAGE_PATH_XC8=${CND_DISTDIR}/XC8/package/template.x.tar
 # SDCC configuration
 CND_ARTIFACT_DIR_SDCC=dist/SDCC/production
-CND_ARTIFACT_NAME_SDCC=Template.X.production.hex
-CND_ARTIFACT_PATH_SDCC=dist/SDCC/production/Template.X.production.hex
+CND_ARTIFACT_NAME_SDCC=Template.X.production.null
+CND_ARTIFACT_PATH_SDCC=dist/SDCC/production/Template.X.production.null
 CND_PACKAGE_DIR_SDCC=${CND_DISTDIR}/SDCC/package
 CND_PACKAGE_NAME_SDCC=template.x.tar
 CND_PACKAGE_PATH_SDCC=${CND_DISTDIR}/SDCC/package/template.x.tar
