@@ -106,21 +106,21 @@ typedef enum bubble_class {
 #ifndef __XC8
  void system_init(void);
 #endif
-
+ 
 /*Project APIs*/
 
-//void load_color(strRGB_t* RGB, RGB_brightness_level_t b_level);
+void load_color(strRGB_t* RGB, RGB_brightness_level_t b_level);
 void comm_control(comm_control_t control_word);
 //void enable_address_detection();
 //void disable_address_detection();
 void set_bubble_address(uint8_t address);
 uint8_t get_bubble_address(void);
 bubble_class_t detect_bubble_class(uint8_t address);
-//strRGB_t get_color_val(colors_names_t color);
+strRGB_t get_color_val(colors_names_t color);
 //void perform_action(routine_item_t item);
 void excute_next_routine_item(const routine_item_t* items);
 bool receive_bubble_address(uint8_t* address);
-void communicate_with_bubbles();
+bool communicate_with_bubbles();
 //void change_routine_array(bubble_class_t bubble_class);
 const routine_item_t* get_bubble_routine();
 #ifdef	__cplusplus

@@ -426,7 +426,7 @@ void change_routine_array(bubble_class_t bubble_class){
 /*
  * perform communication routines
  */
-   void communicate_with_bubbles(){
+   bool communicate_with_bubbles(){
         uint8_t address;
         bool send_check = false, receive_check = false; 
         
@@ -453,7 +453,7 @@ void change_routine_array(bubble_class_t bubble_class){
                 receive_check = false;
             }
         }
-//        return (receive_check && send_check);
+        return (receive_check || send_check);
    }
    
    
