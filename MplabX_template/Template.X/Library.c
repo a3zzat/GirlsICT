@@ -157,7 +157,7 @@ static const strRGB_t color_table[all_colors_num] = {
  * color values is 10 bit resolution
  * so values ranges from 0 - 1023
  */
-static void load_color(strRGB_t* RGB, RGB_brightness_level_t b_level){
+void load_color(strRGB_t* RGB, RGB_brightness_level_t b_level){
     if (((RGB->Red >= PWM_MIN) && (RGB->Red <= PWM_MAX)) && ((RGB->Green >= PWM_MIN) && (RGB->Green <= PWM_MAX)) && ((RGB->Blue >= PWM_MIN) && (RGB->Blue <= PWM_MAX)))
     {
         PWM1_LoadDutyValue(RGB->Red);
@@ -387,7 +387,7 @@ static void perform_action(routine_item_t* item){
            
    }
 }
-   (
+   
    /*
     * execute a list of routine items
     */

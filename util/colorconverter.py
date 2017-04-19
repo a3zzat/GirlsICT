@@ -17,7 +17,10 @@ colorlist = [(0,0,0),
              (0,128,0),
              (128,0,128),
              (0,128,128),
-             (0,0,128)]
+             (0,0,128),
+			 (156,74,153),
+			 (112,199,240)
+			 ]
 
 NamesList=[
 'off    ',
@@ -33,9 +36,11 @@ NamesList=[
 'Maroon ',
 'Olive  ',
 'Green  ',
-'Purple ',
+'mauve  ',
 'Teal   ',
-'Navy   '
+'Navy   ',
+'Purple ',
+'Azure  '
 ]		 
 			 
 def convertColor(colorTuple):

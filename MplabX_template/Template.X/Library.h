@@ -109,7 +109,7 @@ typedef enum bubble_class {
 
 /*Project APIs*/
 
-void load_color(strRGB_t RGB, RGB_brightness_level_t b_level);
+//void load_color(strRGB_t* RGB, RGB_brightness_level_t b_level);
 void comm_control(comm_control_t control_word);
 //void enable_address_detection();
 //void disable_address_detection();
