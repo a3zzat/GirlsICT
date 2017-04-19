@@ -48,7 +48,7 @@
 // CONFIG1
 #pragma config FOSC = INTOSC    // ->INTOSC oscillator: I/O function on CLKIN pin
 #pragma config PWRTE = OFF    // Power-up Timer Enable->PWRT disabled
-#pragma config MCLRE = OFF    // MCLR Pin Function Select->MCLR/VPP pin function is digital input
+#pragma config MCLRE = ON    // MCLR Pin Function Select->MCLR/VPP pin function is MCLR
 #pragma config CP = OFF    // Flash Program Memory Code Protection->Program memory code protection is disabled
 #pragma config BOREN = ON    // Brown-out Reset Enable->Brown-out Reset enabled
 #pragma config CLKOUTEN = OFF    // Clock Out Enable->CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin
@@ -78,8 +78,8 @@ void SYSTEM_Initialize(void)
     OSCILLATOR_Initialize();
     PWM1_Initialize();
     TMR6_Initialize();
-    PWM4_Initialize();
     TMR4_Initialize();
+    PWM4_Initialize();
     PWM3_Initialize();
     TMR2_Initialize();
     EUSART_Initialize();

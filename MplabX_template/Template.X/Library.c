@@ -106,7 +106,7 @@
 /* 
  * bubble address
  */
-static uint8_t bubble_address = 0;
+static uint8_t bubble_address = 10;
 /* 
  * bubble address
  */
@@ -253,17 +253,17 @@ bool receive_bubble_address(uint8_t* address){
 }
 
 /*
- * send the bubble address from the UART
+ * send the bubble address to the UART
  */
 bool send_buuble_address(uint8_t* address){
     bool add_check =false;
-    if(EUSART_DataReady) {
+//    if(EUSART_DataReady) {
         EUSART_Write(START_WORD);
-        if(EUSART_DataReady) {
+//        if(EUSART_DataReady) {
           EUSART_Write(*address);
           add_check = true;
-        }
-    }
+//        }
+//    }
     return add_check;  
 }
 
