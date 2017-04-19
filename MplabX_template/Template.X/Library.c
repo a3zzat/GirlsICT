@@ -240,15 +240,15 @@ uint8_t get_bubble_pair_address(void){
 bool receive_bubble_address(uint8_t* address){
     bool add_check =false;
     uint8_t start_frame = 0x0;
-    if(EUSART_DataReady) {
+   // if(EUSART_DataReady) {
       start_frame = EUSART_Read();
       if (start_frame == START_WORD){
-          if(EUSART_DataReady) {
+         // if(EUSART_DataReady) {
             *address = EUSART_Read();
             add_check = true;
-          }
+       //   }
       }
-    }
+   // }
     return add_check;  
 }
 

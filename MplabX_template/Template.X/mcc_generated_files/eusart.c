@@ -76,12 +76,13 @@ void EUSART_Initialize(void)
 
 uint8_t EUSART_Read(void)
 {
-
+    uint8_t counter = 0; // timeout counter
     while(!PIR1bits.RCIF)
     {
+        counter ++ ;
+        if (counter > 250) break;
     }
 
-    
     if(1 == RC1STAbits.OERR)
     {
         // EUSART error - restart
